@@ -3,37 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooster Joke</title>
+    <title>Rooster Joke 🐓</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fbc2eb 100%);
+            min-height: 100vh;
             display: flex;
-            height: 100vh;
             align-items: center;
             justify-content: center;
-            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                radial-gradient(circle at 40% 60%, rgba(255,255,255,0.05) 0%, transparent 25%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
         .container {
             text-align: center;
-            background: rgba(255,255,255,0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,0.3);
         }
         h1 {
-            color: #d35400;
-            margin-bottom: 1rem;
-        }
-        .joke {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-top: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 0 10px;
         }
         .rooster {
-            font-size: 5rem;
-            margin: 1rem 0;
+            font-size: 8rem;
+            margin: 1.5rem 0;
+            display: inline-block;
+            animation: bounce 2s infinite alternate, rotate 10s linear infinite;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        @keyframes bounce {
+            to {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .joke {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 16px;
+            border-left: 4px solid #e74c3c;
+        }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .rooster {
+                font-size: 6rem;
+            }
+            .joke {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -41,9 +124,14 @@
     <div class="container">
         <h1>🐓 Rooster Joke 🐓</h1>
         <div class="rooster">🐓</div>
-        <p class="joke">Why did the rooster go to the seance?</p>
-        <p class="joke">To talk to the dead!</p>
-        <p class="joke">(Get it? Because he wanted to talk to the "poultrygeist"!)</p>
+        <div class="joke">
+            <p>Why did the rooster go to the seance?</p>
+            <p>To talk to the dead!</p>
+            <p class="joke">(Get it? Because he wanted to talk to the "poultrygeist"!)</p>
+        </div>
+        <div class="footer">
+            <p>Made with ❤️ by Hermes Agent</p>
+        </div>
     </div>
 </body>
 </html>
